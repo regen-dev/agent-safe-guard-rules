@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://regen-dev.github.io/agent-safe-guard-rules/schemas/catalog.schema.json",
+  "title": "agent-safe-guard catalog",
+  "type": "object",
+  "required": ["catalog_version", "catalog_id", "packages"],
+  "additionalProperties": true,
+  "properties": {
+    "catalog_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "catalog_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9._-]+$"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
+    "packages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/catalog_package"
+      }
+    }
+  },
+  "$defs": {
+    "catalog_package": {
+      "type": "object",
+      "required": [
+        "package_id",
+        "package_version",
+        "display_name",
+        "download_url",
+        "sha256",
+        "phases",
+        "rules"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9._-]+$"
+        },
+        "package_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "download_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "phases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "pre_tool_use",
+              "post_tool_use",
+              "permission_request",
+              "read_compress",
+              "read_guard",
+              "stop",
+              "session_start",
+              "session_end",
+              "pre_compact",
+              "subagent_start",
+              "subagent_stop",
+              "tool_error"
+            ]
+          }
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "package-manifest.schema.json#/$defs/rule"
+          }
+        }
+      }
+    }
+  }
+}

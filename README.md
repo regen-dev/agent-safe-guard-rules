@@ -19,6 +19,8 @@ For now, all repository content lives under [`rules/`](rules/README.md).
 Current catalog entrypoint for the curated first-party set:
 
 - [`rules/catalogs/github-core.json`](rules/catalogs/github-core.json)
+- Published immutable bootstrap URL:
+  `https://raw.githubusercontent.com/regen-dev/agent-safe-guard-rules/rules-v0.2.0/rules/catalogs/github-core.json`
 
 Current first-party core packages:
 
@@ -34,6 +36,14 @@ Typical local development flow with a checkout on the same machine:
 
 ```bash
 asg-cli --catalog-add /home/wendel/src/agent-safe-guard-rules/rules/catalogs/github-core.json
+asg-cli --catalog-sync
+asg-cli --catalog-search command
+```
+
+Published bootstrap flow:
+
+```bash
+asg-cli --catalog-add https://raw.githubusercontent.com/regen-dev/agent-safe-guard-rules/rules-v0.2.0/rules/catalogs/github-core.json
 asg-cli --catalog-sync
 asg-cli --catalog-search command
 ```
