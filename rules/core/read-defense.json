@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "package": "read-defense",
   "title": "Read Defense",
-  "summary": "Baseline read-safety rules spanning pre-tool-use guidance and read-guard enforcement for large, generated, or noisy file access.",
+  "summary": "Baseline read-safety rules spanning pre-tool-use guidance, read-guard enforcement, and structural compression for large or noisy file access.",
   "category": "read",
   "rules": [
     {
@@ -69,6 +69,12 @@
       "rule_id": 300110,
       "name": "oversize_regular_file",
       "phase": "read_guard",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 300400,
+      "name": "read_compress_structure_extract",
+      "phase": "read_compress",
       "severity": "medium"
     }
   ]

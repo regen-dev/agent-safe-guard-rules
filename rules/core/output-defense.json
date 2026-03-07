@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "package": "output-defense",
+  "title": "Output Defense",
+  "summary": "Baseline post-tool-use rules for output cleanup, truncation, and operator-facing response shaping.",
+  "category": "output",
+  "rules": [
+    {
+      "rule_id": 250100,
+      "name": "post_tool_use_pipeline",
+      "phase": "post_tool_use",
+      "severity": "medium"
+    }
+  ]
+}

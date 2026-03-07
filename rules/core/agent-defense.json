@@ -2,7 +2,7 @@
   "version": "0.1.0",
   "package": "agent-defense",
   "title": "Agent Defense",
-  "summary": "Baseline subagent behavior and budget rules enforced during pre-tool-use evaluation.",
+  "summary": "Baseline subagent behavior, launch gating, and lifecycle accounting rules enforced across pre-tool-use and subagent hooks.",
   "category": "agent",
   "rules": [
     {
@@ -46,6 +46,18 @@
       "name": "subagent_no_cat_many_files",
       "phase": "pre_tool_use",
       "severity": "medium"
+    },
+    {
+      "rule_id": 150300,
+      "name": "subagent_start_guard",
+      "phase": "subagent_start",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 150310,
+      "name": "subagent_stop_reclaim",
+      "phase": "subagent_stop",
+      "severity": "low"
     }
   ]
 }

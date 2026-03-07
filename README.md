@@ -20,6 +20,16 @@ Current catalog entrypoint for the curated first-party set:
 
 - [`rules/catalogs/github-core.json`](rules/catalogs/github-core.json)
 
+Current first-party core packages:
+
+- `command-defense`
+- `output-defense`
+- `read-defense`
+- `approval-defense`
+- `agent-defense`
+- `telemetry`
+- `memory-defense`
+
 Typical local development flow with a checkout on the same machine:
 
 ```bash

@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "package": "memory-defense",
+  "title": "Memory Defense",
+  "summary": "Baseline pre-compaction rules for carrying forward current session guard state and budget context.",
+  "category": "memory",
+  "rules": [
+    {
+      "rule_id": 350100,
+      "name": "pre_compact_memory_context",
+      "phase": "pre_compact",
+      "severity": "low"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "version": "0.1.0",
+  "package": "telemetry",
+  "title": "Telemetry",
+  "summary": "Baseline lifecycle and error-audit rules for session tracking, stop summaries, and tool error capture.",
+  "category": "telemetry",
+  "rules": [
+    {
+      "rule_id": 400100,
+      "name": "session_start_tracking",
+      "phase": "session_start",
+      "severity": "low"
+    },
+    {
+      "rule_id": 400110,
+      "name": "session_end_cleanup",
+      "phase": "session_end",
+      "severity": "low"
+    },
+    {
+      "rule_id": 400120,
+      "name": "stop_summary_emit",
+      "phase": "stop",
+      "severity": "low"
+    },
+    {
+      "rule_id": 400130,
+      "name": "tool_error_telemetry",
+      "phase": "tool_error",
+      "severity": "low"
+    }
+  ]
+}
