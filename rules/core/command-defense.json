@@ -1,0 +1,111 @@
+{
+  "version": "0.1.0",
+  "package": "command-defense",
+  "title": "Command Defense",
+  "summary": "Baseline pre-tool-use rules for destructive commands, output control, and command execution hygiene.",
+  "category": "command",
+  "rules": [
+    {
+      "rule_id": 100100,
+      "name": "write_max_bytes",
+      "phase": "pre_tool_use",
+      "severity": "high"
+    },
+    {
+      "rule_id": 100110,
+      "name": "edit_max_bytes",
+      "phase": "pre_tool_use",
+      "severity": "high"
+    },
+    {
+      "rule_id": 100120,
+      "name": "notebook_max_bytes",
+      "phase": "pre_tool_use",
+      "severity": "high"
+    },
+    {
+      "rule_id": 100130,
+      "name": "glob_home_recursive",
+      "phase": "pre_tool_use",
+      "severity": "high"
+    },
+    {
+      "rule_id": 100200,
+      "name": "destructive_command",
+      "phase": "pre_tool_use",
+      "severity": "critical"
+    },
+    {
+      "rule_id": 100210,
+      "name": "fork_bomb",
+      "phase": "pre_tool_use",
+      "severity": "critical"
+    },
+    {
+      "rule_id": 100220,
+      "name": "remote_code_execution",
+      "phase": "pre_tool_use",
+      "severity": "critical"
+    },
+    {
+      "rule_id": 100300,
+      "name": "ffmpeg_requires_quiet_flags",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100400,
+      "name": "git_commit_requires_quiet",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100410,
+      "name": "git_log_requires_limit",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100420,
+      "name": "npm_requires_silent",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100430,
+      "name": "cargo_build_requires_quiet",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100440,
+      "name": "make_requires_silent",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100450,
+      "name": "pip_requires_quiet",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100460,
+      "name": "curl_verbose_requires_output",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100470,
+      "name": "wget_requires_quiet",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100480,
+      "name": "docker_requires_quiet",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    }
+  ]
+}

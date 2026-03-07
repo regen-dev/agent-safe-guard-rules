@@ -1,0 +1,75 @@
+{
+  "version": "0.1.0",
+  "package": "read-defense",
+  "title": "Read Defense",
+  "summary": "Baseline read-safety rules spanning pre-tool-use guidance and read-guard enforcement for large, generated, or noisy file access.",
+  "category": "read",
+  "rules": [
+    {
+      "rule_id": 100310,
+      "name": "force_read_override",
+      "phase": "pre_tool_use",
+      "severity": "info"
+    },
+    {
+      "rule_id": 300120,
+      "name": "inspect_file_metadata",
+      "phase": "pre_tool_use",
+      "severity": "info"
+    },
+    {
+      "rule_id": 300130,
+      "name": "limited_pipe_inspection",
+      "phase": "pre_tool_use",
+      "severity": "info"
+    },
+    {
+      "rule_id": 300200,
+      "name": "minified_grep_requires_limit",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 300210,
+      "name": "minified_cat_requires_byte_bound",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100500,
+      "name": "grep_recursive_requires_rg_or_limit",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 100510,
+      "name": "find_sensitive_trees_requires_limit",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 300220,
+      "name": "head_tail_small_window",
+      "phase": "pre_tool_use",
+      "severity": "info"
+    },
+    {
+      "rule_id": 300300,
+      "name": "cat_large_or_binary_file",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 300100,
+      "name": "bundled_generated_path",
+      "phase": "read_guard",
+      "severity": "high"
+    },
+    {
+      "rule_id": 300110,
+      "name": "oversize_regular_file",
+      "phase": "read_guard",
+      "severity": "medium"
+    }
+  ]
+}

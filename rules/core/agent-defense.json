@@ -1,0 +1,51 @@
+{
+  "version": "0.1.0",
+  "package": "agent-defense",
+  "title": "Agent Defense",
+  "summary": "Baseline subagent behavior and budget rules enforced during pre-tool-use evaluation.",
+  "category": "agent",
+  "rules": [
+    {
+      "rule_id": 150100,
+      "name": "subagent_budget_limit",
+      "phase": "pre_tool_use",
+      "severity": "high"
+    },
+    {
+      "rule_id": 150200,
+      "name": "subagent_prefer_glob_over_find",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 150210,
+      "name": "subagent_prefer_grep_tool_over_xargs_grep",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 150220,
+      "name": "subagent_prefer_grep_tool_over_grep",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 150230,
+      "name": "subagent_prefer_tree_or_glob_over_ls_la",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 150240,
+      "name": "subagent_no_cat_glob",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    },
+    {
+      "rule_id": 150250,
+      "name": "subagent_no_cat_many_files",
+      "phase": "pre_tool_use",
+      "severity": "medium"
+    }
+  ]
+}

@@ -15,3 +15,15 @@ Operating model:
   decisions
 
 For now, all repository content lives under [`rules/`](rules/README.md).
+
+Current catalog entrypoint for the curated first-party set:
+
+- [`rules/catalogs/github-core.json`](rules/catalogs/github-core.json)
+
+Typical local development flow with a checkout on the same machine:
+
+```bash
+asg-cli --catalog-add /home/wendel/src/agent-safe-guard-rules/rules/catalogs/github-core.json
+asg-cli --catalog-sync
+asg-cli --catalog-search command
+```

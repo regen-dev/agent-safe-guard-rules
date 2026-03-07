@@ -1,0 +1,39 @@
+{
+  "version": "0.1.0",
+  "package": "approval-defense",
+  "title": "Approval Defense",
+  "summary": "Baseline permission-request rules for high-risk shell approval decisions and auto-approval of narrowly safe commands.",
+  "category": "approval",
+  "rules": [
+    {
+      "rule_id": 200100,
+      "name": "destructive_command",
+      "phase": "permission_request",
+      "severity": "critical"
+    },
+    {
+      "rule_id": 200110,
+      "name": "fork_bomb",
+      "phase": "permission_request",
+      "severity": "critical"
+    },
+    {
+      "rule_id": 200120,
+      "name": "remote_code_execution",
+      "phase": "permission_request",
+      "severity": "critical"
+    },
+    {
+      "rule_id": 200200,
+      "name": "allow_safe_introspection",
+      "phase": "permission_request",
+      "severity": "low"
+    },
+    {
+      "rule_id": 200210,
+      "name": "allow_literal_echo",
+      "phase": "permission_request",
+      "severity": "low"
+    }
+  ]
+}
