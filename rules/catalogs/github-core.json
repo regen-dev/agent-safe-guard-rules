@@ -6,22 +6,22 @@
   "packages": [
     {
       "package_id": "cloud-defense",
-      "package_version": "0.1.0",
+      "package_version": "0.2.0",
       "display_name": "Cloud Defense",
       "description": "Blocks destructive cloud CLI commands across AWS, GCP, Azure, Terraform, Kubernetes, DigitalOcean, Pulumi, Docker, and GitHub. Prevents accidental database deletion, storage wipe, infrastructure destruction, DNS removal, IAM purge, and IaC destroy.",
       "download_url": "../core/cloud-defense.json",
-      "sha256": "106a91d8cb4353e135a93486da63f88ca1b4ac5683d0efdfe383e85c96c6b728",
-      "tags": ["cloud", "aws", "gcp", "azure", "terraform", "kubernetes", "destructive", "pre_tool_use"],
+      "sha256": "90640541b8cc70e41f4029690d756f405a3100c19ae06d2370fc0f67162fd7ad",
+      "tags": ["cloud", "aws", "gcp", "azure", "terraform", "kubernetes", "safety"],
       "phases": ["pre_tool_use"],
       "rules": [
-        {"rule_id": 600100, "name": "cloud_database_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks cloud database deletion commands (AWS RDS/DynamoDB/Redshift/ElastiCache/DocumentDB/Neptune/Keyspaces, GCP Cloud SQL/Firestore/Spanner/Bigtable, Azure SQL/CosmosDB/PostgreSQL/MySQL/Redis, DigitalOcean databases)"},
-        {"rule_id": 600200, "name": "cloud_storage_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks cloud storage/bucket destruction (AWS S3 rb/rm --recursive, GCP gsutil rm -r/storage buckets delete, Azure storage account/container delete)"},
-        {"rule_id": 600300, "name": "cloud_infra_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks cloud infrastructure destruction (EC2 terminate, EKS/GKE/AKS cluster delete, CloudFormation stack delete, GCP project delete, Azure resource group delete, DigitalOcean droplet/cluster delete)"},
-        {"rule_id": 600400, "name": "cloud_dns_domain_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks DNS zone/domain deletion (AWS Route53, GCP DNS, Azure DNS, Cloudflare wrangler, DigitalOcean domains)"},
-        {"rule_id": 600500, "name": "cloud_iam_key_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks IAM/key/secret deletion (AWS IAM users/roles/keys, KMS schedule-key-deletion, Secrets Manager, GCP service accounts/KMS, Azure AD/Key Vault)"},
-        {"rule_id": 600600, "name": "iac_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks infrastructure-as-code destroy commands (terraform destroy/state rm/force-unlock, tofu destroy, pulumi destroy, cdk destroy)"},
-        {"rule_id": 600700, "name": "k8s_critical_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks Kubernetes critical resource deletion (kubectl delete namespace/pvc/pv/crd, helm uninstall)"},
-        {"rule_id": 600800, "name": "repo_registry_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks repository/registry destruction (gh repo delete, ECR delete-repository, GCP artifacts delete, Azure ACR delete, docker system/volume prune)"}
+        {"rule_id": 600100, "name": "cloud_database_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks cloud database deletion commands"},
+        {"rule_id": 600200, "name": "cloud_storage_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks cloud storage/bucket destruction"},
+        {"rule_id": 600300, "name": "cloud_infra_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks cloud infrastructure destruction"},
+        {"rule_id": 600400, "name": "cloud_dns_domain_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks DNS zone/domain deletion"},
+        {"rule_id": 600500, "name": "cloud_iam_key_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks IAM/key/secret deletion"},
+        {"rule_id": 600600, "name": "iac_destroy", "phase": "pre_tool_use", "severity": "critical", "description": "Blocks IaC destroy commands"},
+        {"rule_id": 600700, "name": "k8s_critical_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks Kubernetes critical resource deletion"},
+        {"rule_id": 600800, "name": "repo_registry_destroy", "phase": "pre_tool_use", "severity": "high", "description": "Blocks repository/registry destruction"}
       ]
     }
   ]
