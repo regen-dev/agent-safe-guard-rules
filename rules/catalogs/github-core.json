@@ -2,20 +2,26 @@
   "catalog_version": 1,
   "catalog_id": "github-core",
   "display_name": "GitHub Core Catalog",
-  "generated_at": "2026-03-08T14:55:47Z",
+  "generated_at": "2026-03-08T15:45:00Z",
   "packages": [
     {
-      "package_id": "secrets-defense",
+      "package_id": "cloud-defense",
       "package_version": "0.1.0",
-      "display_name": "Secrets Defense",
-      "description": "Blocks credential file reads and masks .env values, showing keys with partial value prefixes only.",
-      "download_url": "../core/secrets-defense.json",
-      "sha256": "238cf498288136c3772bce622721adc70788180046e98f39430e48381c0ba171",
-      "tags": ["secrets", "env", "credentials", "masking", "read_guard", "read_compress"],
-      "phases": ["read_guard", "read_compress"],
+      "display_name": "Cloud Defense",
+      "description": "Blocks destructive cloud CLI commands across AWS, GCP, Azure, Terraform, Kubernetes, DigitalOcean, Pulumi, Docker, and GitHub. Prevents accidental database deletion, storage wipe, infrastructure destruction, DNS removal, IAM purge, and IaC destroy.",
+      "download_url": "../core/cloud-defense.json",
+      "sha256": "106a91d8cb4353e135a93486da63f88ca1b4ac5683d0efdfe383e85c96c6b728",
+      "tags": ["cloud", "aws", "gcp", "azure", "terraform", "kubernetes", "destructive", "pre_tool_use"],
+      "phases": ["pre_tool_use"],
       "rules": [
-        {"rule_id": 500100, "name": "credentials_file_block", "phase": "read_guard", "severity": "critical"},
-        {"rule_id": 500200, "name": "env_value_masking", "phase": "read_compress", "severity": "high"}
+        {"rule_id": 600100, "name": "cloud_database_destroy", "phase": "pre_tool_use", "severity": "critical"},
+        {"rule_id": 600200, "name": "cloud_storage_destroy", "phase": "pre_tool_use", "severity": "critical"},
+        {"rule_id": 600300, "name": "cloud_infra_destroy", "phase": "pre_tool_use", "severity": "critical"},
+        {"rule_id": 600400, "name": "cloud_dns_domain_destroy", "phase": "pre_tool_use", "severity": "high"},
+        {"rule_id": 600500, "name": "cloud_iam_key_destroy", "phase": "pre_tool_use", "severity": "high"},
+        {"rule_id": 600600, "name": "iac_destroy", "phase": "pre_tool_use", "severity": "critical"},
+        {"rule_id": 600700, "name": "k8s_critical_destroy", "phase": "pre_tool_use", "severity": "high"},
+        {"rule_id": 600800, "name": "repo_registry_destroy", "phase": "pre_tool_use", "severity": "high"}
       ]
     }
   ]
