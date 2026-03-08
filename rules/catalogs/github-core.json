@@ -2,139 +2,20 @@
   "catalog_version": 1,
   "catalog_id": "github-core",
   "display_name": "GitHub Core Catalog",
-  "generated_at": "2026-03-07T18:30:00Z",
+  "generated_at": "2026-03-08T14:55:47Z",
   "packages": [
     {
-      "package_id": "command-defense",
+      "package_id": "secrets-defense",
       "package_version": "0.1.0",
-      "display_name": "Command Defense",
-      "description": "Baseline pre-tool-use rules for destructive commands, output control, and command execution hygiene.",
-      "download_url": "../core/command-defense.json",
-      "sha256": "805752370ab1c775349384560a34c5a70cc7b732de20796eed916b7c01defab2",
-      "tags": ["command", "shell", "safety", "pre_tool_use"],
-      "phases": ["pre_tool_use"],
+      "display_name": "Secrets Defense",
+      "description": "Blocks credential file reads and masks .env values, showing keys with partial value prefixes only.",
+      "download_url": "../core/secrets-defense.json",
+      "sha256": "238cf498288136c3772bce622721adc70788180046e98f39430e48381c0ba171",
+      "tags": ["secrets", "env", "credentials", "masking", "read_guard", "read_compress"],
+      "phases": ["read_guard", "read_compress"],
       "rules": [
-        {"rule_id": 100100, "name": "write_max_bytes", "phase": "pre_tool_use", "severity": "high"},
-        {"rule_id": 100110, "name": "edit_max_bytes", "phase": "pre_tool_use", "severity": "high"},
-        {"rule_id": 100120, "name": "notebook_max_bytes", "phase": "pre_tool_use", "severity": "high"},
-        {"rule_id": 100130, "name": "glob_home_recursive", "phase": "pre_tool_use", "severity": "high"},
-        {"rule_id": 100200, "name": "destructive_command", "phase": "pre_tool_use", "severity": "critical"},
-        {"rule_id": 100210, "name": "fork_bomb", "phase": "pre_tool_use", "severity": "critical"},
-        {"rule_id": 100220, "name": "remote_code_execution", "phase": "pre_tool_use", "severity": "critical"},
-        {"rule_id": 100300, "name": "ffmpeg_requires_quiet_flags", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100400, "name": "git_commit_requires_quiet", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100410, "name": "git_log_requires_limit", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100420, "name": "npm_requires_silent", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100430, "name": "cargo_build_requires_quiet", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100440, "name": "make_requires_silent", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100450, "name": "pip_requires_quiet", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100460, "name": "curl_verbose_requires_output", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100470, "name": "wget_requires_quiet", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100480, "name": "docker_requires_quiet", "phase": "pre_tool_use", "severity": "medium"}
-      ]
-    },
-    {
-      "package_id": "output-defense",
-      "package_version": "0.1.0",
-      "display_name": "Output Defense",
-      "description": "Baseline post-tool-use rules for output cleanup, truncation, and operator-facing response shaping.",
-      "download_url": "../core/output-defense.json",
-      "sha256": "9cd9a3be76d19ef0bd6aa3ea233909918eb86b564b0e899957b31e567adb5d77",
-      "tags": ["output", "post_tool_use", "context"],
-      "phases": ["post_tool_use"],
-      "rules": [
-        {"rule_id": 250100, "name": "post_tool_use_pipeline", "phase": "post_tool_use", "severity": "medium"}
-      ]
-    },
-    {
-      "package_id": "read-defense",
-      "package_version": "0.1.0",
-      "display_name": "Read Defense",
-      "description": "Baseline read-safety rules spanning pre-tool-use guidance, read-guard enforcement, and structural compression for large or noisy file access.",
-      "download_url": "../core/read-defense.json",
-      "sha256": "2a029010cf8462d837b37e5cf55952ca96dca23f6af1e313bec40b589f7b1eff",
-      "tags": ["read", "files", "read_guard", "read_compress", "pre_tool_use"],
-      "phases": ["pre_tool_use", "read_guard", "read_compress"],
-      "rules": [
-        {"rule_id": 100310, "name": "force_read_override", "phase": "pre_tool_use", "severity": "info"},
-        {"rule_id": 300120, "name": "inspect_file_metadata", "phase": "pre_tool_use", "severity": "info"},
-        {"rule_id": 300130, "name": "limited_pipe_inspection", "phase": "pre_tool_use", "severity": "info"},
-        {"rule_id": 300200, "name": "minified_grep_requires_limit", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 300210, "name": "minified_cat_requires_byte_bound", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100500, "name": "grep_recursive_requires_rg_or_limit", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 100510, "name": "find_sensitive_trees_requires_limit", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 300220, "name": "head_tail_small_window", "phase": "pre_tool_use", "severity": "info"},
-        {"rule_id": 300300, "name": "cat_large_or_binary_file", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 300100, "name": "bundled_generated_path", "phase": "read_guard", "severity": "high"},
-        {"rule_id": 300110, "name": "oversize_regular_file", "phase": "read_guard", "severity": "medium"},
-        {"rule_id": 300400, "name": "read_compress_structure_extract", "phase": "read_compress", "severity": "medium"}
-      ]
-    },
-    {
-      "package_id": "approval-defense",
-      "package_version": "0.1.0",
-      "display_name": "Approval Defense",
-      "description": "Baseline permission-request rules for high-risk shell approval decisions and auto-approval of narrowly safe commands.",
-      "download_url": "../core/approval-defense.json",
-      "sha256": "1f75ab8a80b48bdb46f7d38fa186e601137145a12302ba8bdb8694f38ce5f0bd",
-      "tags": ["approval", "permission_request", "shell"],
-      "phases": ["permission_request"],
-      "rules": [
-        {"rule_id": 200100, "name": "destructive_command", "phase": "permission_request", "severity": "critical"},
-        {"rule_id": 200110, "name": "fork_bomb", "phase": "permission_request", "severity": "critical"},
-        {"rule_id": 200120, "name": "remote_code_execution", "phase": "permission_request", "severity": "critical"},
-        {"rule_id": 200200, "name": "allow_safe_introspection", "phase": "permission_request", "severity": "low"},
-        {"rule_id": 200210, "name": "allow_literal_echo", "phase": "permission_request", "severity": "low"}
-      ]
-    },
-    {
-      "package_id": "agent-defense",
-      "package_version": "0.1.0",
-      "display_name": "Agent Defense",
-      "description": "Baseline subagent behavior, launch gating, and lifecycle accounting rules enforced across pre-tool-use and subagent hooks.",
-      "download_url": "../core/agent-defense.json",
-      "sha256": "3dac8d901289e47c55fd52c5e35534e28ca73d82df11b60ea4079a3c12881d10",
-      "tags": ["agent", "subagent", "budget", "pre_tool_use", "subagent_start", "subagent_stop"],
-      "phases": ["pre_tool_use", "subagent_start", "subagent_stop"],
-      "rules": [
-        {"rule_id": 150100, "name": "subagent_budget_limit", "phase": "pre_tool_use", "severity": "high"},
-        {"rule_id": 150200, "name": "subagent_prefer_glob_over_find", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 150210, "name": "subagent_prefer_grep_tool_over_xargs_grep", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 150220, "name": "subagent_prefer_grep_tool_over_grep", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 150230, "name": "subagent_prefer_tree_or_glob_over_ls_la", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 150240, "name": "subagent_no_cat_glob", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 150250, "name": "subagent_no_cat_many_files", "phase": "pre_tool_use", "severity": "medium"},
-        {"rule_id": 150300, "name": "subagent_start_guard", "phase": "subagent_start", "severity": "medium"},
-        {"rule_id": 150310, "name": "subagent_stop_reclaim", "phase": "subagent_stop", "severity": "low"}
-      ]
-    },
-    {
-      "package_id": "telemetry",
-      "package_version": "0.1.0",
-      "display_name": "Telemetry",
-      "description": "Baseline lifecycle and error-audit rules for session tracking, stop summaries, and tool error capture.",
-      "download_url": "../core/telemetry.json",
-      "sha256": "d74983f01127e154ee8ae014a07d70d5ed042f38ef0a5866c63aefcd4e774db0",
-      "tags": ["telemetry", "session", "stop", "tool_error"],
-      "phases": ["session_start", "session_end", "stop", "tool_error"],
-      "rules": [
-        {"rule_id": 400100, "name": "session_start_tracking", "phase": "session_start", "severity": "low"},
-        {"rule_id": 400110, "name": "session_end_cleanup", "phase": "session_end", "severity": "low"},
-        {"rule_id": 400120, "name": "stop_summary_emit", "phase": "stop", "severity": "low"},
-        {"rule_id": 400130, "name": "tool_error_telemetry", "phase": "tool_error", "severity": "low"}
-      ]
-    },
-    {
-      "package_id": "memory-defense",
-      "package_version": "0.1.0",
-      "display_name": "Memory Defense",
-      "description": "Baseline pre-compaction rules for carrying forward current session guard state and budget context.",
-      "download_url": "../core/memory-defense.json",
-      "sha256": "f9b8fdae33ff1fa1d9923373cf12027fe955edb1fc863afd9564cfebff97d435",
-      "tags": ["memory", "pre_compact", "context"],
-      "phases": ["pre_compact"],
-      "rules": [
-        {"rule_id": 350100, "name": "pre_compact_memory_context", "phase": "pre_compact", "severity": "low"}
+        {"rule_id": 500100, "name": "credentials_file_block", "phase": "read_guard", "severity": "critical"},
+        {"rule_id": 500200, "name": "env_value_masking", "phase": "read_compress", "severity": "high"}
       ]
     }
   ]
